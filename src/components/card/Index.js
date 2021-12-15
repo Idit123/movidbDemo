@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function Index({ title, poster_path, release_date }) {
+export default function Card({ title, poster_path, release_date }) {
   const defaultImagePath = "https://image.tmdb.org/t/p/original"
   return (
     <>

@@ -1,5 +1,8 @@
 import React from "react"
-import logo from "../../assets/logo/tmdb.svg"
+import { Link, Outlet } from "react-router-dom"
+import logo from "../../assets/tmdb.svg"
+import NavbarItems from "../../utils/NavbarItemsList"
+import DropDownNavbar from "../../components/DropDownNavbar"
 import { Navbar } from "./Index.style"
 
 export default function Index() {
@@ -7,15 +10,24 @@ export default function Index() {
     <Navbar>
       <div className="container">
         <div className="logo">
-          <img src={logo} alt="" />
+          <Link to="/">
+            <img src={logo} alt="" />
+          </Link>
           <ul>
-            <li className="nav-item">Movies</li>
-            <li className="nav-item">Tv Shows</li>
-            <li className="nav-item">People</li>
-            <li className="nav-item">More</li>
+            {NavbarItems.length > 0 &&
+              NavbarItems.map((NavbarItems) => (
+                <li key={NavbarItems.id}>
+                  <Link to={NavbarItems.route}>{NavbarItems.name}</Link>
+                  <DropDownNavbar
+                    key={NavbarItems.children.id}
+                    child={NavbarItems.children}
+                  />
+                </li>
+              ))}
           </ul>
         </div>
       </div>
+      <Outlet />
     </Navbar>
   )
 }

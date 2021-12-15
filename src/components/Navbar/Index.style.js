@@ -23,12 +23,39 @@ export const Navbar = styled.div`
         margin: 0;
         padding: 0;
         li {
+          a {
+            text-decoration: none;
+            color: #ffffff;
+          }
+          .dropdown {
+            display: none;
+          }
           font-size: 14px;
           font-weight: 600;
-          color: #ffffff;
           padding: 15px 15px;
           &:hover {
             cursor: pointer;
+            .dropdown {
+              top: 50px;
+              box-sizing: content-box;
+              display: block;
+              position: absolute;
+              background-color: #fff;
+              border: 1px solid #fff;
+              border-radius: 5px;
+              ul {
+                display: flex;
+                flex-direction: column;
+                li {
+                  padding: 10px 15px;
+                  font-weight: 500;
+                  a {
+                    text-decoration: none;
+                    color: #000;
+                  }
+                }
+              }
+            }
           }
         }
       }
