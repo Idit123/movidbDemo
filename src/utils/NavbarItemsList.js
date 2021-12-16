@@ -39,12 +39,12 @@ const NavbarItems = [
       {
         id: 12,
         name: "Airing Today",
-        route: "tvshows/nowplaying",
+        route: "tvshows/airingtoday",
       },
       {
         id: 13,
         name: "On TV",
-        route: "tvshows/upcoming",
+        route: "tvshows/ontv",
       },
       {
         id: 14,

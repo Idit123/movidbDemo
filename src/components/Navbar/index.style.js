@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const Navbar = styled.div`
+export const NavbarStyle = styled.div`
   background-color: #032541;
   padding: 10px 0;
   .container {
@@ -23,6 +23,9 @@ export const Navbar = styled.div`
         margin: 0;
         padding: 0;
         li {
+          font-size: 14px;
+          font-weight: 600;
+          padding: 15px 15px;
           a {
             text-decoration: none;
             color: #ffffff;
@@ -30,16 +33,13 @@ export const Navbar = styled.div`
           .dropdown {
             display: none;
           }
-          font-size: 14px;
-          font-weight: 600;
-          padding: 15px 15px;
           &:hover {
             cursor: pointer;
             .dropdown {
+              position: absolute;
               top: 50px;
               box-sizing: content-box;
               display: block;
-              position: absolute;
               background-color: #fff;
               border: 1px solid #fff;
               border-radius: 5px;
@@ -47,8 +47,9 @@ export const Navbar = styled.div`
                 display: flex;
                 flex-direction: column;
                 li {
-                  padding: 10px 15px;
                   font-weight: 500;
+                  margin: 0;
+                  padding: 10px 10px;
                   a {
                     text-decoration: none;
                     color: #000;

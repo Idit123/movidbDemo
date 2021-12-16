@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, Outlet } from "react-router-dom"
 
-const Movie = (props) => {
+const navbarDropDown = (props) => {
   return (
     <div className="dropdown">
       <ul>
@@ -17,4 +17,4 @@ const Movie = (props) => {
   )
 }
 
-export default Movie
+export default navbarDropDown

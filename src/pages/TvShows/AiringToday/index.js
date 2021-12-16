@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react"
 import { getApiCall } from "../../../API/ApiCallGet"
-import { moviesApi } from "../../../API/Constants"
+import { tvShowsApi } from "../../../API/Constants"
 import CardContainer from "../../../components/CardContainer"
 import useInfiniteScroll from "../../../components/CustomInfiniteScroll"
 
-const NowPlaying = () => {
+const AiringToday = () => {
   const [movie, setMovie] = useState([])
   const [pageCount, setPageCount] = useState(1)
   const [title, setTitle] = useState("")
@@ -17,7 +17,7 @@ const NowPlaying = () => {
   const fetchMoreData = async () => {
     //API Call
     const { title, Response } = await getApiCall(
-      moviesApi.nowplaying,
+      tvShowsApi.airingtoday,
       pageCount
     )
     setTitle(title)
@@ -30,7 +30,7 @@ const NowPlaying = () => {
   const [isFetching, setIsFetching] = useInfiniteScroll(fetchMoreData)
 
   //render view
-  return <CardContainer pagetitle={title} type="movies" data={movie} />
+  return <CardContainer type="tvshows" pagetitle={title} data={movie} />
 }
 
-export default NowPlaying
+export default AiringToday

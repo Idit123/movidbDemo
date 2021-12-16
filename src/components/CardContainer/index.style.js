@@ -7,6 +7,10 @@ export const CardStyle = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    h1 {
+      width: 100%;
+      text-align: center;
+    }
     .card {
       width: 240px;
       height: 450px;

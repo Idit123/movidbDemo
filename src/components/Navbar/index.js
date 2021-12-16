@@ -2,12 +2,12 @@ import React from "react"
 import { Link, Outlet } from "react-router-dom"
 import logo from "../../assets/tmdb.svg"
 import NavbarItems from "../../utils/NavbarItemsList"
-import DropDownNavbar from "../../components/DropDownNavbar"
-import { Navbar } from "./Index.style"
+import NavbarDropDown from "../DropDownNavbar"
+import { NavbarStyle } from "./index.style"
 
-export default function Index() {
+const NavbarComponent = () => {
   return (
-    <Navbar>
+    <NavbarStyle>
       <div className="container">
         <div className="logo">
           <Link to="/">
@@ -18,7 +18,7 @@ export default function Index() {
               NavbarItems.map((NavbarItems) => (
                 <li key={NavbarItems.id}>
                   <Link to={NavbarItems.route}>{NavbarItems.name}</Link>
-                  <DropDownNavbar
+                  <NavbarDropDown
                     key={NavbarItems.children.id}
                     child={NavbarItems.children}
                   />
@@ -28,6 +28,7 @@ export default function Index() {
         </div>
       </div>
       <Outlet />
-    </Navbar>
+    </NavbarStyle>
   )
 }
+export default NavbarComponent
