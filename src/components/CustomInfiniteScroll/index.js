@@ -5,9 +5,9 @@ const useInfiniteScroll = (FetchMoreData) => {
   const [isFetching, setIsFetching] = useState(false)
 
   //Set Scroll at a Top in refresh Page
-  useEffect(() => {
-    window.history.scrollRestoration = "manual"
-  }, [])
+  // useEffect(() => {
+  //   window.history.scrollRestoration = "manual"
+  // }, [])
 
   //Lifecycle
   useEffect(() => {

@@ -28,7 +28,14 @@ const Popular = () => {
   const [isFetching, setIsFetching] = useInfiniteScroll(fetchMoreData)
 
   //render view
-  return <CardContainer pagetitle={title} type="movies" data={movie} />
+  return (
+    <CardContainer
+      pagetitle={title}
+      type="movie"
+      data={movie}
+      pagecount={pageCount}
+    />
+  )
 }
 
 export default Popular

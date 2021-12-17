@@ -46,13 +46,13 @@ export const NavbarStyle = styled.div`
               ul {
                 display: flex;
                 flex-direction: column;
-                li {
-                  font-weight: 500;
-                  margin: 0;
-                  padding: 10px 10px;
-                  a {
-                    text-decoration: none;
-                    color: #000;
+                a {
+                  text-decoration: none;
+                  color: #000;
+                  li {
+                    font-weight: 500;
+                    margin: 0;
+                    padding: 10px 10px;
                   }
                 }
               }

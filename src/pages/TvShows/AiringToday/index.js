@@ -30,7 +30,7 @@ const AiringToday = () => {
   const [isFetching, setIsFetching] = useInfiniteScroll(fetchMoreData)
 
   //render view
-  return <CardContainer type="tvshows" pagetitle={title} data={movie} />
+  return <CardContainer type="tvshow" pagetitle={title} data={movie} />
 }
 
 export default AiringToday

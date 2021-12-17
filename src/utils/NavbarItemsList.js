@@ -34,22 +34,22 @@ const NavbarItems = [
       {
         id: 11,
         name: "Popular",
-        route: "tvshows/popular",
+        route: "tv/popular",
       },
       {
         id: 12,
         name: "Airing Today",
-        route: "tvshows/airingtoday",
+        route: "tv/airingtoday",
       },
       {
         id: 13,
         name: "On TV",
-        route: "tvshows/ontv",
+        route: "tv/ontv",
       },
       {
         id: 14,
         name: "Top Rated",
-        route: "tvshows/toprated",
+        route: "tv/toprated",
       },
     ],
   },

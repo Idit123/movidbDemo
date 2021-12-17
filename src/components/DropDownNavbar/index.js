@@ -7,9 +7,9 @@ const navbarDropDown = (props) => {
       <ul>
         {props.child.length > 0 &&
           props.child.map((item) => (
-            <li key={item.id}>
-              <Link to={item.route}>{item.name}</Link>
-            </li>
+            <Link key={item.id} to={item.route}>
+              <li>{item.name}</li>
+            </Link>
           ))}
       </ul>
       <Outlet />

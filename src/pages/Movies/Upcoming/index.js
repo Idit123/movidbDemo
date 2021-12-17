@@ -27,7 +27,7 @@ const Upcoming = () => {
   const [isFetching, setIsFetching] = useInfiniteScroll(fetchMoreData)
 
   //render view
-  return <CardContainer pagetitle={title} type="movies" data={movie} />
+  return <CardContainer pagetitle={title} type="movie" data={movie} />
 }
 
 export default Upcoming

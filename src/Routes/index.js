@@ -16,6 +16,7 @@ import LeaderBoard from "../pages/More//LeaderBoard"
 import Support from "../pages/More//Support"
 import API from "../pages/More/API"
 import Error from "../pages/Error"
+import CardDetailsPage from "../pages/CardDetailspage"
 
 const Router = () => {
   return (
@@ -24,20 +25,20 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="movie">
+          <Route path=":id" element={<CardDetailsPage />} />
           <Route path="popular" element={<MoviesPopular />} />
           <Route path="nowplaying" element={<MoviesNowPlaying />} />
           <Route path="upcoming" element={<MoviesUpcoming />} />
           <Route path="toprated" element={<MoviesTopRated />} />
         </Route>
-        <Route path="tvshows">
+        <Route path="tv">
+          <Route path=":id" element={<CardDetailsPage />} />
           <Route path="popular" element={<TvShowsPopular />} />
           <Route path="airingtoday" element={<TvShowsAiringToday />} />
           <Route path="ontv" element={<TvShowsOnTv />} />
           <Route path="toprated" element={<TvShowsTopRated />} />
         </Route>
-        <Route path="person">
-          <Route Index element={<PeoplePopular />} />
-        </Route>
+        <Route path="person" element={<PeoplePopular />} />
         <Route path="discuss" element={<Discuss />}></Route>
         <Route path="leaderboard" element={<LeaderBoard />}></Route>
         <Route path="support" element={<Support />}></Route>
