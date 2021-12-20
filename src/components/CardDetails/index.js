@@ -30,8 +30,12 @@ const CardDetails = ({ type, id, data }) => {
       await axios
         .get(url)
         .then((response) => {
-          console.log(`response`, response.data.results[0])
-          setTralier(response.data.results[0].key)
+          // console.log(`response`, response.data.results[0])
+          if (response.data.results[0]) {
+            setTralier(response.data.results[0].key)
+          } else {
+            console.log("tralier not found")
+          }
         })
         .catch((error) => {
           console.log(error)
@@ -86,7 +90,6 @@ const CardDetails = ({ type, id, data }) => {
               width="400px"
               height="200px"
             />
-            <div className="tralier"></div>
           </div>
         </div>
       </div>
