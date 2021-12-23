@@ -16,7 +16,7 @@ const TopRated = () => {
 
   // life cycle hooks
   useEffect(() => {
-    if (restoreData == "") {
+    if (restoreData === "") {
       fetchMoreData()
     } else {
       setMovie(restoreData)
