@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
+import { useDispatch } from "react-redux"
+import { scrollIndex } from "../../redux/actions"
 
-const RestoreData = (data, pagecount) => {
+const RestoreData = () => {
   const [position, setPosition] = useState(0)
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    localStorage.setItem("ScrollIndex", position)
-    localStorage.setItem("Data", JSON.stringify(data))
-    localStorage.setItem("PageCount", pagecount)
+    dispatch(scrollIndex(position))
   }, [position])
 
   const handleScroll = () => {

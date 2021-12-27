@@ -8,6 +8,7 @@ export const NavbarStyle = styled.div`
     align-items: center;
     padding: 0 40px;
     .logo {
+      width: 100%;
       display: flex;
       align-items: center;
       img {
@@ -59,6 +60,11 @@ export const NavbarStyle = styled.div`
             }
           }
         }
+      }
+    }
+    .resetbutton {
+      button {
+        padding: 7px;
       }
     }
   }

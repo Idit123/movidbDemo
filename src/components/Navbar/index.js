@@ -1,11 +1,20 @@
 import React from "react"
+import { useDispatch } from "react-redux"
 import { Link, Outlet } from "react-router-dom"
 import logo from "../../assets/tmdb.svg"
+import { movieAction, scrollIndex, tvShowAction } from "../../redux/actions"
 import NavbarItems from "../../utils/NavbarItemsList"
 import NavbarDropDown from "../DropDownNavbar"
 import { NavbarStyle } from "./index.style"
 
 const NavbarComponent = () => {
+  const dispatch = useDispatch()
+
+  const resetStore = () => {
+    dispatch(movieAction.resetMovieStore())
+    dispatch(tvShowAction.resetTvShowStore())
+  }
+
   return (
     <NavbarStyle>
       <div className="container">
@@ -25,6 +34,9 @@ const NavbarComponent = () => {
                 </li>
               ))}
           </ul>
+        </div>
+        <div className="resetbutton">
+          <button onClick={resetStore}>RESET</button>
         </div>
       </div>
       <Outlet />
