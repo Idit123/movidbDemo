@@ -1,13 +1,5 @@
-import { SET_SCROLL_INDEX } from "./actionType"
 import movieAction from "./movieAction"
 import tvShowAction from "./tvShowAction"
+import scrollIndexAction from "./scrollIndexAction"
 
-const scrollIndex = (index) => {
-  return {
-    type: SET_SCROLL_INDEX,
-    payload: {
-      index,
-    },
-  }
-}
-export { movieAction, tvShowAction, scrollIndex }
+export { movieAction, tvShowAction, scrollIndexAction }

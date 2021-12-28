@@ -1,21 +1,8 @@
-import {
-  FETCH_API_CALL,
-  SET_NOWPLAYING_MOVIE_DATA,
-  SET_POPULAR_MOVIE_DATA,
-  SET_RESET_STORE,
-  SET_TOPRATED_MOVIE_DATA,
-  SET_UPCOMING_MOVIE_DATA,
-} from "./actionType"
+import actionType from "./actionType"
 
-const resetMovieStore = () => {
+const popularMovieRequest = (category, pagecount) => {
   return {
-    type: SET_RESET_STORE,
-  }
-}
-
-const movieApiCall = async (category, pagecount) => {
-  return {
-    type: FETCH_API_CALL,
+    type: actionType.SET_POPULAR_MOVIE_REQUEST,
     payload: {
       category,
       pagecount,
@@ -23,9 +10,9 @@ const movieApiCall = async (category, pagecount) => {
   }
 }
 
-const popularMovieAction = (pagetitle, data, pagecount) => {
+const popularMovieSuccess = (pagetitle, data, pagecount) => {
   return {
-    type: SET_POPULAR_MOVIE_DATA,
+    type: actionType.SET_POPULAR_MOVIE_SUCCESS,
     payload: {
       pagetitle,
       data,
@@ -33,10 +20,27 @@ const popularMovieAction = (pagetitle, data, pagecount) => {
     },
   }
 }
-
-const nowPlayingMovieAction = (pagetitle, data, pagecount) => {
+const popularMovieFailure = (error) => {
   return {
-    type: SET_NOWPLAYING_MOVIE_DATA,
+    type: actionType.SET_POPULAR_MOVIE_FAILURE,
+    payload: {
+      error,
+    },
+  }
+}
+const nowPlayingMovieRequest = (category, pagecount) => {
+  return {
+    type: actionType.SET_NOWPLAYING_MOVIE_REQUEST,
+    payload: {
+      category,
+      pagecount,
+    },
+  }
+}
+
+const nowPlayingMovieSuccess = (pagetitle, data, pagecount) => {
+  return {
+    type: actionType.SET_NOWPLAYING_MOVIE_SUCCESS,
     payload: {
       pagetitle,
       data,
@@ -44,10 +48,27 @@ const nowPlayingMovieAction = (pagetitle, data, pagecount) => {
     },
   }
 }
-
-const upComingMovieAction = (pagetitle, data, pagecount) => {
+const nowPlayingMovieFailure = (error) => {
   return {
-    type: SET_UPCOMING_MOVIE_DATA,
+    type: actionType.SET_NOWPLAYING_MOVIE_FAILURE,
+    payload: {
+      error,
+    },
+  }
+}
+const upComingMovieRequest = (category, pagecount) => {
+  return {
+    type: actionType.SET_UPCOMING_MOVIE_REQUEST,
+    payload: {
+      category,
+      pagecount,
+    },
+  }
+}
+
+const upComingMovieSuccess = (pagetitle, data, pagecount) => {
+  return {
+    type: actionType.SET_UPCOMING_MOVIE_SUCCESS,
     payload: {
       pagetitle,
       data,
@@ -55,10 +76,27 @@ const upComingMovieAction = (pagetitle, data, pagecount) => {
     },
   }
 }
-
-const topRatedMovieAction = (pagetitle, data, pagecount) => {
+const upComingMovieFailure = (error) => {
   return {
-    type: SET_TOPRATED_MOVIE_DATA,
+    type: actionType.SET_UPCOMING_MOVIE_FAILURE,
+    payload: {
+      error,
+    },
+  }
+}
+const topRatedMovieRequest = (category, pagecount) => {
+  return {
+    type: actionType.SET_TOPRATED_MOVIE_REQUEST,
+    payload: {
+      category,
+      pagecount,
+    },
+  }
+}
+
+const topRatedMovieSuccess = (pagetitle, data, pagecount) => {
+  return {
+    type: actionType.SET_TOPRATED_MOVIE_SUCCESS,
     payload: {
       pagetitle,
       data,
@@ -66,13 +104,25 @@ const topRatedMovieAction = (pagetitle, data, pagecount) => {
     },
   }
 }
-
-const movieAction = {
-  resetMovieStore,
-  movieApiCall,
-  popularMovieAction,
-  nowPlayingMovieAction,
-  upComingMovieAction,
-  topRatedMovieAction,
+const topRatedMovieFailure = (error) => {
+  return {
+    type: actionType.SET_TOPRATED_MOVIE_FAILURE,
+    payload: {
+      error,
+    },
+  }
 }
-export default movieAction
+export default {
+  popularMovieRequest,
+  popularMovieSuccess,
+  popularMovieFailure,
+  nowPlayingMovieRequest,
+  nowPlayingMovieSuccess,
+  nowPlayingMovieFailure,
+  upComingMovieRequest,
+  upComingMovieSuccess,
+  upComingMovieFailure,
+  topRatedMovieRequest,
+  topRatedMovieSuccess,
+  topRatedMovieFailure,
+}

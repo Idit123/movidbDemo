@@ -1,62 +1,128 @@
-import {
-  SET_AIRING_TODAY_TVSHOW_DATA,
-  SET_ONTV_TVSHOW_DATA,
-  SET_POPULAR_TVSHOW_DATA,
-  SET_RESET_STORE,
-  SET_TOPRATED_TVSHOW_DATA,
-} from "./actionType"
+import actionType from "./actionType"
 
-const resetTvShowStore = () => {
+const popularTvShowRequest = (category, pagecount) => {
   return {
-    type: SET_RESET_STORE,
-  }
-}
-const popularTvShowAction = (pagetitle, data, pagecount) => {
-  return {
-    type: SET_POPULAR_TVSHOW_DATA,
+    type: actionType.SET_POPULAR_TVSHOW_REQUEST,
     payload: {
-      pagetitle,
-      data,
-      pagecount,
-    },
-  }
-}
-const airingTodayTvShowAction = (pagetitle, data, pagecount) => {
-  return {
-    type: SET_AIRING_TODAY_TVSHOW_DATA,
-    payload: {
-      pagetitle,
-      data,
-      pagecount,
-    },
-  }
-}
-const onTvTvShowAction = (pagetitle, data, pagecount) => {
-  return {
-    type: SET_ONTV_TVSHOW_DATA,
-    payload: {
-      pagetitle,
-      data,
-      pagecount,
-    },
-  }
-}
-const topRatedTvShowAction = (pagetitle, data, pagecount) => {
-  return {
-    type: SET_TOPRATED_TVSHOW_DATA,
-    payload: {
-      pagetitle,
-      data,
+      category,
       pagecount,
     },
   }
 }
 
-const tvShowAction = {
-  resetTvShowStore,
-  popularTvShowAction,
-  airingTodayTvShowAction,
-  onTvTvShowAction,
-  topRatedTvShowAction,
+const popularTvShowSuccess = (pagetitle, data, pagecount) => {
+  return {
+    type: actionType.SET_POPULAR_TVSHOW_SUCCESS,
+    payload: {
+      pagetitle,
+      data,
+      pagecount,
+    },
+  }
 }
-export default tvShowAction
+const popularTvShowFailure = (error) => {
+  return {
+    type: actionType.SET_POPULAR_TVSHOW_FAILURE,
+    payload: {
+      error,
+    },
+  }
+}
+const airingTodayTvShowRequest = (category, pagecount) => {
+  return {
+    type: actionType.SET_NOWPLAYING_TVSHOW_REQUEST,
+    payload: {
+      category,
+      pagecount,
+    },
+  }
+}
+
+const airingTodayTvShowSuccess = (pagetitle, data, pagecount) => {
+  return {
+    type: actionType.SET_NOWPLAYING_TVSHOW_SUCCESS,
+    payload: {
+      pagetitle,
+      data,
+      pagecount,
+    },
+  }
+}
+const airingTodayTvShowFailure = (error) => {
+  return {
+    type: actionType.SET_NOWPLAYING_TVSHOW_FAILURE,
+    payload: {
+      error,
+    },
+  }
+}
+const onTvTvShowRequest = (category, pagecount) => {
+  return {
+    type: actionType.SET_UPCOMING_TVSHOW_REQUEST,
+    payload: {
+      category,
+      pagecount,
+    },
+  }
+}
+
+const onTvTvShowSuccess = (pagetitle, data, pagecount) => {
+  return {
+    type: actionType.SET_UPCOMING_TVSHOW_SUCCESS,
+    payload: {
+      pagetitle,
+      data,
+      pagecount,
+    },
+  }
+}
+const onTvTvShowFailure = (error) => {
+  return {
+    type: actionType.SET_UPCOMING_TVSHOW_FAILURE,
+    payload: {
+      error,
+    },
+  }
+}
+const topRatedTvShowRequest = (category, pagecount) => {
+  return {
+    type: actionType.SET_TOPRATED_TVSHOW_REQUEST,
+    payload: {
+      category,
+      pagecount,
+    },
+  }
+}
+
+const topRatedTvShowSuccess = (pagetitle, data, pagecount) => {
+  return {
+    type: actionType.SET_TOPRATED_TVSHOW_SUCCESS,
+    payload: {
+      pagetitle,
+      data,
+      pagecount,
+    },
+  }
+}
+const topRatedTvShowFailure = (error) => {
+  return {
+    type: actionType.SET_TOPRATED_TVSHOW_FAILURE,
+    payload: {
+      error,
+    },
+  }
+}
+export default {
+  popularTvShowRequest,
+  popularTvShowSuccess,
+  popularTvShowFailure,
+  airingTodayTvShowRequest,
+  airingTodayTvShowSuccess,
+  airingTodayTvShowFailure,
+  onTvTvShowRequest,
+  onTvTvShowSuccess,
+  onTvTvShowFailure,
+  topRatedTvShowRequest,
+  topRatedTvShowSuccess,
+  topRatedTvShowFailure,
+}

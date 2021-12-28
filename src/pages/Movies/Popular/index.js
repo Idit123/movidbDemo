@@ -30,24 +30,26 @@ const Popular = () => {
       setTimeout(() => {}, 1000)
     }
     setTimeout(() => {
-      window.scrollTo(0, +scrollIndexValue.index)
+      window.scrollTo(0, +scrollIndexValue)
     }, 100)
   }, [])
 
   // Api methods
   const fetchMoreData = async () => {
-    const { title, Response } = await getApiCall(moviesApi.popular, pageCount)
-    dispatch(
-      movieAction.popularMovieAction(
-        title,
-        [...(popularMovie?.data || []), ...Response.data.results],
-        pageCount + 1
-      )
-    )
-    setpageTitle(title)
-    setMovie([...movie, ...Response.data.results])
-    setPageCount(pageCount + 1)
-    setIsFetching(false)
+    dispatch(movieAction.movieApiCall(moviesApi.popular, pageCount))
+
+    // dispatch(
+    //   movieAction.popularMovieAction(
+    //     title,
+    //     [...(popularMovie?.data || []), ...Response.data.results],
+    //     pageCount + 1
+    //   )
+    // )
+    // const { title, Response } = await getApiCall(moviesApi.popular, pageCount)
+    // setpageTitle(title)
+    // setMovie([...movie, ...Response.data.results])
+    // setPageCount(pageCount + 1)
+    // setIsFetching(false)
   }
 
   //restore scroll index

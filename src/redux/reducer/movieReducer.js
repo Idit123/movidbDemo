@@ -1,22 +1,15 @@
-import {
-  SET_NOWPLAYING_MOVIE_DATA,
-  SET_POPULAR_MOVIE_DATA,
-  SET_RESET_STORE,
-  SET_TOPRATED_MOVIE_DATA,
-  SET_UPCOMING_MOVIE_DATA,
-} from "../actions/actionType"
+import actionType from "../actions/actionType"
 
-// reducer with initial state
-const initialState = {
-  popularMovie: { pagetitle: "", data: "", pagecount: "" },
-  nowPlayingMovie: { pagetitle: "", data: "", pagecount: "" },
-  upComingMovie: { pagetitle: "", data: "", pagecount: "" },
-  topRatedMovie: { pagetitle: "", data: "", pagecount: "" },
-}
+const initialState = {}
 
 export const movieReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_POPULAR_MOVIE_DATA:
+    //popularMovie
+    case actionType.SET_POPULAR_MOVIE_REQUEST:
+      return {
+        ...state,
+      }
+    case actionType.SET_POPULAR_MOVIE_SUCCESS:
       return {
         ...state,
         popularMovie: {
@@ -25,7 +18,19 @@ export const movieReducer = (state = initialState, action) => {
           pagecount: action.payload.pagecount,
         },
       }
-    case SET_NOWPLAYING_MOVIE_DATA:
+    case actionType.SET_POPULAR_MOVIE_FAILURE:
+      return {
+        ...state,
+        popularMovieError: {
+          errorMessage: action.payload.error,
+        },
+      }
+    //nowPlayingMovie
+    case actionType.SET_NOWPLAYING_MOVIE_REQUEST:
+      return {
+        ...state,
+      }
+    case actionType.SET_NOWPLAYING_MOVIE_SUCCESS:
       return {
         ...state,
         nowPlayingMovie: {
@@ -34,7 +39,19 @@ export const movieReducer = (state = initialState, action) => {
           pagecount: action.payload.pagecount,
         },
       }
-    case SET_UPCOMING_MOVIE_DATA:
+    case actionType.SET_NOWPLAYING_MOVIE_FAILURE:
+      return {
+        ...state,
+        nowPlayingMovieError: {
+          errorMessage: action.payload.error,
+        },
+      }
+    //upComingMovie
+    case actionType.SET_UPCOMING_MOVIE_REQUEST:
+      return {
+        ...state,
+      }
+    case actionType.SET_UPCOMING_MOVIE_SUCCESS:
       return {
         ...state,
         upComingMovie: {
@@ -43,7 +60,19 @@ export const movieReducer = (state = initialState, action) => {
           pagecount: action.payload.pagecount,
         },
       }
-    case SET_TOPRATED_MOVIE_DATA:
+    case actionType.SET_UPCOMING_MOVIE_FAILURE:
+      return {
+        ...state,
+        upComingMovieError: {
+          errorMessage: action.payload.error,
+        },
+      }
+    //topRatedMovie
+    case actionType.SET_TOPRATED_MOVIE_REQUEST:
+      return {
+        ...state,
+      }
+    case actionType.SET_TOPRATED_MOVIE_SUCCESS:
       return {
         ...state,
         topRatedMovie: {
@@ -52,10 +81,14 @@ export const movieReducer = (state = initialState, action) => {
           pagecount: action.payload.pagecount,
         },
       }
-    case SET_RESET_STORE:
+    case actionType.SET_TOPRATED_MOVIE_FAILURE:
       return {
-        ...initialState,
+        ...state,
+        topRatedMovieError: {
+          errorMessage: action.payload.error,
+        },
       }
+
     default:
       return state
   }

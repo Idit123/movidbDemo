@@ -1,61 +1,93 @@
-import {
-  SET_AIRING_TODAY_TVSHOW_DATA,
-  SET_ONTV_TVSHOW_DATA,
-  SET_POPULAR_TVSHOW_DATA,
-  SET_RESET_STORE,
-  SET_TOPRATED_TVSHOW_DATA,
-} from "../actions/actionType"
+import actionType from "../actions/actionType"
 
-// reducer with initial state
-const initialState = {
-  popularTvShow: { pagetitle: "", data: "", pagecount: "" },
-  airingTodayTvShow: { pagetitle: "", data: "", pagecount: "" },
-  onTvTvShow: { pagetitle: "", data: "", pagecount: "" },
-  topRatedTvShow: { pagetitle: "", data: "", pagecount: "" },
-}
-
+const initialState = {}
 export const tvShowReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_POPULAR_TVSHOW_DATA:
+    //popularMovie
+    case actionType.SET_POPULAR_TVSHOW_REQUEST:
       return {
         ...state,
-        popularTvShow: {
+      }
+    case actionType.SET_POPULAR_TVSHOW_SUCCESS:
+      return {
+        ...state,
+        popularMovie: {
           pagetitle: action.payload.pagetitle,
           data: action.payload.data,
           pagecount: action.payload.pagecount,
         },
       }
-    case SET_AIRING_TODAY_TVSHOW_DATA:
+    case actionType.SET_POPULAR_TVSHOW_FAILURE:
       return {
         ...state,
-        airingTodayTvShow: {
+        popularMovieError: {
+          errorMessage: action.payload.error,
+        },
+      }
+    //nowPlayingMovie
+    case actionType.SET_AIRING_TODAY_TVSHOW_REQUEST:
+      return {
+        ...state,
+      }
+    case actionType.SET_AIRING_TODAY_TVSHOW_SUCCESS:
+      return {
+        ...state,
+        popularMovie: {
           pagetitle: action.payload.pagetitle,
           data: action.payload.data,
           pagecount: action.payload.pagecount,
         },
       }
-    case SET_ONTV_TVSHOW_DATA:
+    case actionType.SET_AIRING_TODAY_TVSHOW_FAILURE:
       return {
         ...state,
-        onTvTvShow: {
+        popularMovieError: {
+          errorMessage: action.payload.error,
+        },
+      }
+    //upComingMovie
+    case actionType.SET_ONTV_TVSHOW_REQUEST:
+      return {
+        ...state,
+      }
+    case actionType.SET_ONTV_TVSHOW_SUCCESS:
+      return {
+        ...state,
+        popularMovie: {
           pagetitle: action.payload.pagetitle,
           data: action.payload.data,
           pagecount: action.payload.pagecount,
         },
       }
-    case SET_TOPRATED_TVSHOW_DATA:
+    case actionType.SET_ONTV_TVSHOW_FAILURE:
       return {
         ...state,
-        topRatedTvShow: {
+        popularMovieError: {
+          errorMessage: action.payload.error,
+        },
+      }
+    //topRatedMovie
+    case actionType.SET_TOPRATED_TVSHOW_REQUEST:
+      return {
+        ...state,
+      }
+    case actionType.SET_TOPRATED_TVSHOW_SUCCESS:
+      return {
+        ...state,
+        popularMovie: {
           pagetitle: action.payload.pagetitle,
           data: action.payload.data,
           pagecount: action.payload.pagecount,
         },
       }
-    case SET_RESET_STORE:
+    case actionType.SET_TOPRATED_TVSHOW_FAILURE:
       return {
-        ...initialState,
+        ...state,
+        popularMovieError: {
+          errorMessage: action.payload.error,
+        },
       }
+
     default:
       return state
   }
