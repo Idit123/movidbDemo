@@ -65,6 +65,9 @@ export const NavbarStyle = styled.div`
     .resetbutton {
       button {
         padding: 7px;
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
   }

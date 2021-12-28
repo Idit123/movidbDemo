@@ -1,4 +1,10 @@
-import { ActionTypes } from "../actions"
+import {
+  SET_AIRING_TODAY_TVSHOW_DATA,
+  SET_ONTV_TVSHOW_DATA,
+  SET_POPULAR_TVSHOW_DATA,
+  SET_RESET_STORE,
+  SET_TOPRATED_TVSHOW_DATA,
+} from "../actions/actionType"
 
 // reducer with initial state
 const initialState = {
@@ -10,7 +16,7 @@ const initialState = {
 
 export const tvShowReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionTypes.SET_POPULAR_TVSHOW_DATA:
+    case SET_POPULAR_TVSHOW_DATA:
       return {
         ...state,
         popularTvShow: {
@@ -19,7 +25,7 @@ export const tvShowReducer = (state = initialState, action) => {
           pagecount: action.payload.pagecount,
         },
       }
-    case ActionTypes.SET_AIRING_TODAY_TVSHOW_DATA:
+    case SET_AIRING_TODAY_TVSHOW_DATA:
       return {
         ...state,
         airingTodayTvShow: {
@@ -28,7 +34,7 @@ export const tvShowReducer = (state = initialState, action) => {
           pagecount: action.payload.pagecount,
         },
       }
-    case ActionTypes.SET_ONTV_TVSHOW_DATA:
+    case SET_ONTV_TVSHOW_DATA:
       return {
         ...state,
         onTvTvShow: {
@@ -37,7 +43,7 @@ export const tvShowReducer = (state = initialState, action) => {
           pagecount: action.payload.pagecount,
         },
       }
-    case ActionTypes.SET_TOPRATED_TVSHOW_DATA:
+    case SET_TOPRATED_TVSHOW_DATA:
       return {
         ...state,
         topRatedTvShow: {
@@ -46,7 +52,7 @@ export const tvShowReducer = (state = initialState, action) => {
           pagecount: action.payload.pagecount,
         },
       }
-    case ActionTypes.SET_RESET_STORE:
+    case SET_RESET_STORE:
       return {
         ...initialState,
       }

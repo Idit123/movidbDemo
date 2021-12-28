@@ -1,11 +1,11 @@
 import { combineReducers } from "redux"
+import { SET_SCROLL_INDEX } from "../actions/actionType"
 import { movieReducer } from "./movieReducer"
 import { tvShowReducer } from "./tvShowReduser"
-import { ActionTypes } from "../actions"
 
 const scrollIndex = (state = 0, action) => {
   switch (action.type) {
-    case ActionTypes.SET_SCROLL_INDEX:
+    case SET_SCROLL_INDEX:
       return action.payload
     default:
       return state

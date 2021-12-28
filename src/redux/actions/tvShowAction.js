@@ -1,13 +1,19 @@
-import { ActionTypes } from "."
+import {
+  SET_AIRING_TODAY_TVSHOW_DATA,
+  SET_ONTV_TVSHOW_DATA,
+  SET_POPULAR_TVSHOW_DATA,
+  SET_RESET_STORE,
+  SET_TOPRATED_TVSHOW_DATA,
+} from "./actionType"
 
 const resetTvShowStore = () => {
   return {
-    type: ActionTypes.SET_RESET_STORE,
+    type: SET_RESET_STORE,
   }
 }
 const popularTvShowAction = (pagetitle, data, pagecount) => {
   return {
-    type: ActionTypes.SET_POPULAR_TVSHOW_DATA,
+    type: SET_POPULAR_TVSHOW_DATA,
     payload: {
       pagetitle,
       data,
@@ -17,7 +23,7 @@ const popularTvShowAction = (pagetitle, data, pagecount) => {
 }
 const airingTodayTvShowAction = (pagetitle, data, pagecount) => {
   return {
-    type: ActionTypes.SET_AIRING_TODAY_TVSHOW_DATA,
+    type: SET_AIRING_TODAY_TVSHOW_DATA,
     payload: {
       pagetitle,
       data,
@@ -27,7 +33,7 @@ const airingTodayTvShowAction = (pagetitle, data, pagecount) => {
 }
 const onTvTvShowAction = (pagetitle, data, pagecount) => {
   return {
-    type: ActionTypes.SET_ONTV_TVSHOW_DATA,
+    type: SET_ONTV_TVSHOW_DATA,
     payload: {
       pagetitle,
       data,
@@ -37,7 +43,7 @@ const onTvTvShowAction = (pagetitle, data, pagecount) => {
 }
 const topRatedTvShowAction = (pagetitle, data, pagecount) => {
   return {
-    type: ActionTypes.SET_TOPRATED_TVSHOW_DATA,
+    type: SET_TOPRATED_TVSHOW_DATA,
     payload: {
       pagetitle,
       data,
@@ -46,10 +52,11 @@ const topRatedTvShowAction = (pagetitle, data, pagecount) => {
   }
 }
 
-export default {
+const tvShowAction = {
   resetTvShowStore,
   popularTvShowAction,
   airingTodayTvShowAction,
   onTvTvShowAction,
   topRatedTvShowAction,
 }
+export default tvShowAction

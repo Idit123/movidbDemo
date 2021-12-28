@@ -1,5 +1,10 @@
-import { ActionTypes } from "../actions"
-import { getApiCall } from "../../API/ApiCallGet"
+import {
+  SET_NOWPLAYING_MOVIE_DATA,
+  SET_POPULAR_MOVIE_DATA,
+  SET_RESET_STORE,
+  SET_TOPRATED_MOVIE_DATA,
+  SET_UPCOMING_MOVIE_DATA,
+} from "../actions/actionType"
 
 // reducer with initial state
 const initialState = {
@@ -11,18 +16,7 @@ const initialState = {
 
 export const movieReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionTypes.FETCH_API_CALL:
-      const response = async () => {
-        console.log(`category`, action.payload.category)
-        console.log(`count`, action.payload.pagecount)
-        const response = await getApiCall(
-          action.payload.category,
-          action.payload.pagecount
-        )
-        console.log(`response`, response)
-      }
-      return {}
-    case ActionTypes.SET_POPULAR_MOVIE_DATA:
+    case SET_POPULAR_MOVIE_DATA:
       return {
         ...state,
         popularMovie: {
@@ -31,7 +25,7 @@ export const movieReducer = (state = initialState, action) => {
           pagecount: action.payload.pagecount,
         },
       }
-    case ActionTypes.SET_NOWPLAYING_MOVIE_DATA:
+    case SET_NOWPLAYING_MOVIE_DATA:
       return {
         ...state,
         nowPlayingMovie: {
@@ -40,7 +34,7 @@ export const movieReducer = (state = initialState, action) => {
           pagecount: action.payload.pagecount,
         },
       }
-    case ActionTypes.SET_UPCOMING_MOVIE_DATA:
+    case SET_UPCOMING_MOVIE_DATA:
       return {
         ...state,
         upComingMovie: {
@@ -49,7 +43,7 @@ export const movieReducer = (state = initialState, action) => {
           pagecount: action.payload.pagecount,
         },
       }
-    case ActionTypes.SET_TOPRATED_MOVIE_DATA:
+    case SET_TOPRATED_MOVIE_DATA:
       return {
         ...state,
         topRatedMovie: {
@@ -58,7 +52,7 @@ export const movieReducer = (state = initialState, action) => {
           pagecount: action.payload.pagecount,
         },
       }
-    case ActionTypes.SET_RESET_STORE:
+    case SET_RESET_STORE:
       return {
         ...initialState,
       }

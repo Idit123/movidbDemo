@@ -36,10 +36,6 @@ const Popular = () => {
 
   // Api methods
   const fetchMoreData = async () => {
-    const results = await dispatch(
-      movieAction.movieApiCall(moviesApi.popular, pageCount)
-    )
-    console.log(`results`, results)
     const { title, Response } = await getApiCall(moviesApi.popular, pageCount)
     dispatch(
       movieAction.popularMovieAction(

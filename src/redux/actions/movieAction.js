@@ -1,14 +1,21 @@
-import { ActionTypes } from "."
+import {
+  FETCH_API_CALL,
+  SET_NOWPLAYING_MOVIE_DATA,
+  SET_POPULAR_MOVIE_DATA,
+  SET_RESET_STORE,
+  SET_TOPRATED_MOVIE_DATA,
+  SET_UPCOMING_MOVIE_DATA,
+} from "./actionType"
 
 const resetMovieStore = () => {
   return {
-    type: ActionTypes.SET_RESET_STORE,
+    type: SET_RESET_STORE,
   }
 }
 
 const movieApiCall = async (category, pagecount) => {
   return {
-    type: ActionTypes.FETCH_API_CALL,
+    type: FETCH_API_CALL,
     payload: {
       category,
       pagecount,
@@ -18,7 +25,7 @@ const movieApiCall = async (category, pagecount) => {
 
 const popularMovieAction = (pagetitle, data, pagecount) => {
   return {
-    type: ActionTypes.SET_POPULAR_MOVIE_DATA,
+    type: SET_POPULAR_MOVIE_DATA,
     payload: {
       pagetitle,
       data,
@@ -29,7 +36,7 @@ const popularMovieAction = (pagetitle, data, pagecount) => {
 
 const nowPlayingMovieAction = (pagetitle, data, pagecount) => {
   return {
-    type: ActionTypes.SET_NOWPLAYING_MOVIE_DATA,
+    type: SET_NOWPLAYING_MOVIE_DATA,
     payload: {
       pagetitle,
       data,
@@ -40,7 +47,7 @@ const nowPlayingMovieAction = (pagetitle, data, pagecount) => {
 
 const upComingMovieAction = (pagetitle, data, pagecount) => {
   return {
-    type: ActionTypes.SET_UPCOMING_MOVIE_DATA,
+    type: SET_UPCOMING_MOVIE_DATA,
     payload: {
       pagetitle,
       data,
@@ -51,7 +58,7 @@ const upComingMovieAction = (pagetitle, data, pagecount) => {
 
 const topRatedMovieAction = (pagetitle, data, pagecount) => {
   return {
-    type: ActionTypes.SET_TOPRATED_MOVIE_DATA,
+    type: SET_TOPRATED_MOVIE_DATA,
     payload: {
       pagetitle,
       data,
@@ -60,7 +67,7 @@ const topRatedMovieAction = (pagetitle, data, pagecount) => {
   }
 }
 
-export default {
+const movieAction = {
   resetMovieStore,
   movieApiCall,
   popularMovieAction,
@@ -68,3 +75,4 @@ export default {
   upComingMovieAction,
   topRatedMovieAction,
 }
+export default movieAction
