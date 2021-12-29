@@ -14,20 +14,19 @@ const TopRated = () => {
   const [pageTitle, setpageTitle] = useState("")
 
   //get store Value
-  const topRatedTvShow = useSelector((state) => state.tvShow.topRatedTvShow)
+  const topRatedTvShow = useSelector((state) => state.tvShow?.topRatedTvShow)
   const scrollIndexValue = useSelector((state) => state.scrollIndex)
   //dispatch
   const dispatch = useDispatch()
 
   // life cycle hooks
   useEffect(() => {
-    if (topRatedTvShow?.data === "") {
+    if (!topRatedTvShow?.data) {
       fetchMoreData()
     } else {
       setpageTitle(topRatedTvShow?.pagetitle)
       setMovie(topRatedTvShow?.data)
       setPageCount(topRatedTvShow?.pagecount)
-      setTimeout(() => {}, 1000)
     }
     setTimeout(() => {
       window.scrollTo(0, +scrollIndexValue.index)
@@ -38,7 +37,7 @@ const TopRated = () => {
   const fetchMoreData = async () => {
     const { title, Response } = await getApiCall(tvShowsApi.toprated, pageCount)
     dispatch(
-      tvShowAction.topRatedTvShowAction(
+      tvShowAction.topRatedTvShowRequest(
         title,
         [...(topRatedTvShow?.data || []), ...Response.data.results],
         pageCount + 1

@@ -1,10 +1,11 @@
 import actionType from "./actionType"
 
-const popularTvShowRequest = (category, pagecount) => {
+const popularTvShowRequest = (pagetitle, data, pagecount) => {
   return {
     type: actionType.SET_POPULAR_TVSHOW_REQUEST,
     payload: {
-      category,
+      pagetitle,
+      data,
       pagecount,
     },
   }
@@ -28,11 +29,12 @@ const popularTvShowFailure = (error) => {
     },
   }
 }
-const airingTodayTvShowRequest = (category, pagecount) => {
+const airingTodayTvShowRequest = (pagetitle, data, pagecount) => {
   return {
-    type: actionType.SET_NOWPLAYING_TVSHOW_REQUEST,
+    type: actionType.SET_AIRING_TODAY_TVSHOW_REQUEST,
     payload: {
-      category,
+      pagetitle,
+      data,
       pagecount,
     },
   }
@@ -40,7 +42,7 @@ const airingTodayTvShowRequest = (category, pagecount) => {
 
 const airingTodayTvShowSuccess = (pagetitle, data, pagecount) => {
   return {
-    type: actionType.SET_NOWPLAYING_TVSHOW_SUCCESS,
+    type: actionType.SET_AIRING_TODAY_TVSHOW_SUCCESS,
     payload: {
       pagetitle,
       data,
@@ -50,17 +52,18 @@ const airingTodayTvShowSuccess = (pagetitle, data, pagecount) => {
 }
 const airingTodayTvShowFailure = (error) => {
   return {
-    type: actionType.SET_NOWPLAYING_TVSHOW_FAILURE,
+    type: actionType.SET_AIRING_TODAY_TVSHOW_FAILURE,
     payload: {
       error,
     },
   }
 }
-const onTvTvShowRequest = (category, pagecount) => {
+const onTvTvShowRequest = (pagetitle, data, pagecount) => {
   return {
-    type: actionType.SET_UPCOMING_TVSHOW_REQUEST,
+    type: actionType.SET_ONTV_TVSHOW_REQUEST,
     payload: {
-      category,
+      pagetitle,
+      data,
       pagecount,
     },
   }
@@ -68,7 +71,7 @@ const onTvTvShowRequest = (category, pagecount) => {
 
 const onTvTvShowSuccess = (pagetitle, data, pagecount) => {
   return {
-    type: actionType.SET_UPCOMING_TVSHOW_SUCCESS,
+    type: actionType.SET_ONTV_TVSHOW_SUCCESS,
     payload: {
       pagetitle,
       data,
@@ -78,17 +81,18 @@ const onTvTvShowSuccess = (pagetitle, data, pagecount) => {
 }
 const onTvTvShowFailure = (error) => {
   return {
-    type: actionType.SET_UPCOMING_TVSHOW_FAILURE,
+    type: actionType.SET_ONTV_TVSHOW_FAILURE,
     payload: {
       error,
     },
   }
 }
-const topRatedTvShowRequest = (category, pagecount) => {
+const topRatedTvShowRequest = (pagetitle, data, pagecount) => {
   return {
     type: actionType.SET_TOPRATED_TVSHOW_REQUEST,
     payload: {
-      category,
+      pagetitle,
+      data,
       pagecount,
     },
   }

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react"
-import { getApiCall } from "../../../API/ApiCallGet"
 import { moviesApi } from "../../../API/Constants"
 import CardContainer from "../../../components/CardContainer"
 import useInfiniteScroll from "../../../components/CustomInfiniteScroll"
@@ -21,32 +20,28 @@ const TopRated = () => {
 
   // life cycle hooks
   useEffect(() => {
-    if (topRatedMovie?.data === "") {
+    if (!topRatedMovie?.data) {
       fetchMoreData()
-    } else {
-      setpageTitle(topRatedMovie?.pagetitle)
-      setMovie(topRatedMovie?.data)
-      setPageCount(topRatedMovie?.pagecount)
-      setTimeout(() => {}, 1000)
     }
     setTimeout(() => {
-      window.scrollTo(0, +scrollIndexValue.index)
+      window.scrollTo(0, +scrollIndexValue)
     }, 100)
   }, [])
 
+  // call useeffect on update variable
+  useEffect(() => {
+    if (topRatedMovie) {
+      setMovie(topRatedMovie?.data)
+      setpageTitle(topRatedMovie?.pagetitle)
+      setPageCount(topRatedMovie?.pagecount + 1)
+    }
+  }, [topRatedMovie])
+
   // Api methods
-  const fetchMoreData = async () => {
-    const { title, Response } = await getApiCall(moviesApi.toprated, pageCount)
+  const fetchMoreData = () => {
     dispatch(
-      movieAction.topRatedMovieAction(
-        title,
-        [...(topRatedMovie?.data || []), ...Response.data.results],
-        pageCount + 1
-      )
+      movieAction.topRatedMovieRequest(movie, moviesApi.toprated, pageCount)
     )
-    setpageTitle(title)
-    setMovie([...movie, ...Response.data.results])
-    setPageCount(pageCount + 1)
     setIsFetching(false)
   }
 

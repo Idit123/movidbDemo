@@ -3,7 +3,7 @@ import actionType from "../actions/actionType"
 const initialState = {}
 export const tvShowReducer = (state = initialState, action) => {
   switch (action.type) {
-    //popularMovie
+    //popularTvShow
     case actionType.SET_POPULAR_TVSHOW_REQUEST:
       return {
         ...state,
@@ -11,7 +11,7 @@ export const tvShowReducer = (state = initialState, action) => {
     case actionType.SET_POPULAR_TVSHOW_SUCCESS:
       return {
         ...state,
-        popularMovie: {
+        popularTvShow: {
           pagetitle: action.payload.pagetitle,
           data: action.payload.data,
           pagecount: action.payload.pagecount,
@@ -20,11 +20,11 @@ export const tvShowReducer = (state = initialState, action) => {
     case actionType.SET_POPULAR_TVSHOW_FAILURE:
       return {
         ...state,
-        popularMovieError: {
+        popularTvShowError: {
           errorMessage: action.payload.error,
         },
       }
-    //nowPlayingMovie
+    //nowPlayingTvShow
     case actionType.SET_AIRING_TODAY_TVSHOW_REQUEST:
       return {
         ...state,
@@ -32,7 +32,7 @@ export const tvShowReducer = (state = initialState, action) => {
     case actionType.SET_AIRING_TODAY_TVSHOW_SUCCESS:
       return {
         ...state,
-        popularMovie: {
+        airingTodayTvShow: {
           pagetitle: action.payload.pagetitle,
           data: action.payload.data,
           pagecount: action.payload.pagecount,
@@ -41,11 +41,11 @@ export const tvShowReducer = (state = initialState, action) => {
     case actionType.SET_AIRING_TODAY_TVSHOW_FAILURE:
       return {
         ...state,
-        popularMovieError: {
+        airingTodayTvShowError: {
           errorMessage: action.payload.error,
         },
       }
-    //upComingMovie
+    //upComingTvShow
     case actionType.SET_ONTV_TVSHOW_REQUEST:
       return {
         ...state,
@@ -53,7 +53,7 @@ export const tvShowReducer = (state = initialState, action) => {
     case actionType.SET_ONTV_TVSHOW_SUCCESS:
       return {
         ...state,
-        popularMovie: {
+        onTvTvShow: {
           pagetitle: action.payload.pagetitle,
           data: action.payload.data,
           pagecount: action.payload.pagecount,
@@ -62,11 +62,11 @@ export const tvShowReducer = (state = initialState, action) => {
     case actionType.SET_ONTV_TVSHOW_FAILURE:
       return {
         ...state,
-        popularMovieError: {
+        onTvTvShowError: {
           errorMessage: action.payload.error,
         },
       }
-    //topRatedMovie
+    //topRatedTvShow
     case actionType.SET_TOPRATED_TVSHOW_REQUEST:
       return {
         ...state,
@@ -74,7 +74,7 @@ export const tvShowReducer = (state = initialState, action) => {
     case actionType.SET_TOPRATED_TVSHOW_SUCCESS:
       return {
         ...state,
-        popularMovie: {
+        topRatedTvShow: {
           pagetitle: action.payload.pagetitle,
           data: action.payload.data,
           pagecount: action.payload.pagecount,
@@ -83,7 +83,7 @@ export const tvShowReducer = (state = initialState, action) => {
     case actionType.SET_TOPRATED_TVSHOW_FAILURE:
       return {
         ...state,
-        popularMovieError: {
+        topRatedTvShowError: {
           errorMessage: action.payload.error,
         },
       }

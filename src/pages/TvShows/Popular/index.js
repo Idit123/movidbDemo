@@ -14,23 +14,22 @@ const Popular = () => {
   const [pageTitle, setpageTitle] = useState("")
 
   //get store Value
-  const popularTvShow = useSelector((state) => state.tvShow.popularTvShow)
+  const popularTvShow = useSelector((state) => state.tvShow?.popularTvShow)
   const scrollIndexValue = useSelector((state) => state.scrollIndex)
   //dispatch
   const dispatch = useDispatch()
 
   // life cycle hooks
   useEffect(() => {
-    if (popularTvShow?.data === "") {
+    if (!popularTvShow?.data) {
       fetchMoreData()
     } else {
       setpageTitle(popularTvShow?.pagetitle)
       setMovie(popularTvShow?.data)
       setPageCount(popularTvShow?.pagecount)
-      setTimeout(() => {}, 1000)
     }
     setTimeout(() => {
-      window.scrollTo(0, +scrollIndexValue.index)
+      window.scrollTo(0, +scrollIndexValue)
     }, 100)
   }, [])
 
@@ -38,7 +37,7 @@ const Popular = () => {
   const fetchMoreData = async () => {
     const { title, Response } = await getApiCall(tvShowsApi.popular, pageCount)
     dispatch(
-      tvShowAction.popularTvShowAction(
+      tvShowAction.popularTvShowRequest(
         title,
         [...(popularTvShow?.data || []), ...Response.data.results],
         pageCount + 1

@@ -14,20 +14,19 @@ const OnTv = () => {
   const [pageTitle, setpageTitle] = useState("")
 
   //get store Value
-  const onTvTvShow = useSelector((state) => state.tvShow.onTvTvShow)
+  const onTvTvShow = useSelector((state) => state.tvShow?.onTvTvShow)
   const scrollIndexValue = useSelector((state) => state.scrollIndex)
   //dispatch
   const dispatch = useDispatch()
 
   // life cycle hooks
   useEffect(() => {
-    if (onTvTvShow?.data === "") {
+    if (!onTvTvShow?.data) {
       fetchMoreData()
     } else {
       setpageTitle(onTvTvShow?.pagetitle)
       setMovie(onTvTvShow?.data)
       setPageCount(onTvTvShow?.pagecount)
-      setTimeout(() => {}, 1000)
     }
     setTimeout(() => {
       window.scrollTo(0, +scrollIndexValue.index)
@@ -38,7 +37,7 @@ const OnTv = () => {
   const fetchMoreData = async () => {
     const { title, Response } = await getApiCall(tvShowsApi.ontv, pageCount)
     dispatch(
-      tvShowAction.onTvTvShowAction(
+      tvShowAction.onTvTvShowRequest(
         title,
         [...(onTvTvShow?.data || []), ...Response.data.results],
         pageCount + 1

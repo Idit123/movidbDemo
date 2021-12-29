@@ -22,7 +22,7 @@ export const movieReducer = (state = initialState, action) => {
       return {
         ...state,
         popularMovieError: {
-          errorMessage: action.payload.error,
+          errorMessage: action.payload,
         },
       }
     //nowPlayingMovie

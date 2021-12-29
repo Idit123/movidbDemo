@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react"
-import { getApiCall } from "../../../API/ApiCallGet"
 import { moviesApi } from "../../../API/Constants"
 import CardContainer from "../../../components/CardContainer"
 import useInfiniteScroll from "../../../components/CustomInfiniteScroll"
@@ -21,32 +20,28 @@ const Upcoming = () => {
 
   // life cycle hooks
   useEffect(() => {
-    if (upComingMovie?.data === "") {
+    if (!upComingMovie?.data) {
       fetchMoreData()
-    } else {
-      setpageTitle(upComingMovie?.pagetitle)
-      setMovie(upComingMovie?.data)
-      setPageCount(upComingMovie?.pagecount)
-      setTimeout(() => {}, 1000)
     }
     setTimeout(() => {
-      window.scrollTo(0, +scrollIndexValue.index)
+      window.scrollTo(0, +scrollIndexValue)
     }, 100)
   }, [])
 
+  // call useeffect on update variable
+  useEffect(() => {
+    if (upComingMovie) {
+      setMovie(upComingMovie?.data)
+      setpageTitle(upComingMovie?.pagetitle)
+      setPageCount(upComingMovie?.pagecount + 1)
+    }
+  }, [upComingMovie])
+
   // Api methods
-  const fetchMoreData = async () => {
-    const { title, Response } = await getApiCall(moviesApi.upcoming, pageCount)
+  const fetchMoreData = () => {
     dispatch(
-      movieAction.upComingMovieAction(
-        title,
-        [...(upComingMovie?.data || []), ...Response.data.results],
-        pageCount + 1
-      )
+      movieAction.upComingMovieRequest(movie, moviesApi.upcoming, pageCount)
     )
-    setpageTitle(title)
-    setMovie([...movie, ...Response.data.results])
-    setPageCount(pageCount + 1)
     setIsFetching(false)
   }
 

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react"
-import { getApiCall } from "../../../API/ApiCallGet"
 import { moviesApi } from "../../../API/Constants"
 import CardContainer from "../../../components/CardContainer"
 import useInfiniteScroll from "../../../components/CustomInfiniteScroll"
@@ -15,41 +14,35 @@ const Popular = () => {
 
   //get store Value
   const popularMovie = useSelector((state) => state.movie.popularMovie)
-  const scrollIndexValue = useSelector((state) => state.scrollIndex)
+  const scrollIndexValue = useSelector((state) => state?.scrollIndex)
   //dispatch
   const dispatch = useDispatch()
 
   // life cycle hooks
   useEffect(() => {
-    if (popularMovie?.data === "") {
+    if (!popularMovie?.data) {
       fetchMoreData()
-    } else {
-      setpageTitle(popularMovie?.pagetitle)
-      setMovie(popularMovie?.data)
-      setPageCount(popularMovie?.pagecount)
-      setTimeout(() => {}, 1000)
     }
     setTimeout(() => {
       window.scrollTo(0, +scrollIndexValue)
     }, 100)
   }, [])
 
-  // Api methods
-  const fetchMoreData = async () => {
-    dispatch(movieAction.movieApiCall(moviesApi.popular, pageCount))
+  // call useeffect on update variable
+  useEffect(() => {
+    if (popularMovie) {
+      setMovie(popularMovie?.data)
+      setpageTitle(popularMovie?.pagetitle)
+      setPageCount(popularMovie?.pagecount + 1)
+    }
+  }, [popularMovie])
 
-    // dispatch(
-    //   movieAction.popularMovieAction(
-    //     title,
-    //     [...(popularMovie?.data || []), ...Response.data.results],
-    //     pageCount + 1
-    //   )
-    // )
-    // const { title, Response } = await getApiCall(moviesApi.popular, pageCount)
-    // setpageTitle(title)
-    // setMovie([...movie, ...Response.data.results])
-    // setPageCount(pageCount + 1)
-    // setIsFetching(false)
+  // Api methods
+  const fetchMoreData = () => {
+    dispatch(
+      movieAction.popularMovieRequest(movie, moviesApi.popular, pageCount)
+    )
+    setIsFetching(false)
   }
 
   //restore scroll index

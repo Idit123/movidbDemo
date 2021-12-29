@@ -15,7 +15,7 @@ const AiringToday = () => {
 
   //get store Value
   const airingTodayTvShow = useSelector(
-    (state) => state.tvShow.airingTodayTvShow
+    (state) => state.tvShow?.airingTodayTvShow
   )
   const scrollIndexValue = useSelector((state) => state.scrollIndex)
   //dispatch
@@ -23,13 +23,12 @@ const AiringToday = () => {
 
   // life cycle hooks
   useEffect(() => {
-    if (airingTodayTvShow?.data === "") {
+    if (!airingTodayTvShow?.data) {
       fetchMoreData()
     } else {
       setpageTitle(airingTodayTvShow?.pagetitle)
       setMovie(airingTodayTvShow?.data)
       setPageCount(airingTodayTvShow?.pagecount)
-      setTimeout(() => {}, 1000)
     }
     setTimeout(() => {
       window.scrollTo(0, +scrollIndexValue.index)
@@ -43,7 +42,7 @@ const AiringToday = () => {
       pageCount
     )
     dispatch(
-      tvShowAction.airingTodayTvShowAction(
+      tvShowAction.airingTodayTvShowRequest(
         title,
         [...(airingTodayTvShow?.data || []), ...Response.data.results],
         pageCount + 1

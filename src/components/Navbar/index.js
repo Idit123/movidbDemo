@@ -35,9 +35,9 @@ const NavbarComponent = () => {
               ))}
           </ul>
         </div>
-        <div className="resetbutton">
+        {/* <div className="resetbutton">
           <button onClick={resetStore}>RESET</button>
-        </div>
+        </div> */}
       </div>
       <Outlet />
     </NavbarStyle>

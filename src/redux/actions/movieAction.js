@@ -1,9 +1,10 @@
 import actionType from "./actionType"
 
-const popularMovieRequest = (category, pagecount) => {
+const popularMovieRequest = (data, category, pagecount) => {
   return {
     type: actionType.SET_POPULAR_MOVIE_REQUEST,
     payload: {
+      data,
       category,
       pagecount,
     },
@@ -28,10 +29,11 @@ const popularMovieFailure = (error) => {
     },
   }
 }
-const nowPlayingMovieRequest = (category, pagecount) => {
+const nowPlayingMovieRequest = (data, category, pagecount) => {
   return {
     type: actionType.SET_NOWPLAYING_MOVIE_REQUEST,
     payload: {
+      data,
       category,
       pagecount,
     },
@@ -56,10 +58,11 @@ const nowPlayingMovieFailure = (error) => {
     },
   }
 }
-const upComingMovieRequest = (category, pagecount) => {
+const upComingMovieRequest = (data, category, pagecount) => {
   return {
     type: actionType.SET_UPCOMING_MOVIE_REQUEST,
     payload: {
+      data,
       category,
       pagecount,
     },
@@ -84,10 +87,11 @@ const upComingMovieFailure = (error) => {
     },
   }
 }
-const topRatedMovieRequest = (category, pagecount) => {
+const topRatedMovieRequest = (data, category, pagecount) => {
   return {
     type: actionType.SET_TOPRATED_MOVIE_REQUEST,
     payload: {
+      data,
       category,
       pagecount,
     },
