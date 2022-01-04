@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
-import { scrollIndexAction } from "../../redux/actions"
+import { getScrollIndex } from "../../redux-toolkit/slice/scrollIndexSlice"
+// import { scrollIndexAction } from "../../redux/actions"
 
 const RestoreData = () => {
   const [position, setPosition] = useState(0)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(scrollIndexAction.scrollIndex(position))
+    dispatch(getScrollIndex(position))
+    // dispatch(scrollIndexAction.scrollIndex(position))
   }, [position])
 
   const handleScroll = () => {

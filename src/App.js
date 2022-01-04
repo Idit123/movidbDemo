@@ -1,23 +1,16 @@
 import Router from "./Routes"
 import "./App.css"
 import React, { useEffect } from "react"
-import AllStore from "./redux/store"
+import { toolKitStore } from "./redux-toolkit/store"
+// import AllStore from "./redux/store"
+
 // import { saveState } from "./redux/localStorage"
 
 const App = () => {
   // Life cycle Hooks
   useEffect(() => {
-    console.log("App is mounted with store data", AllStore.store.getState())
+    console.log("App is mounted with store data", toolKitStore.getState())
   }, [])
-
-  // store.subscribe(() => {
-  //   saveState({
-  //     /* example state */
-  //     scrollIndex: store.getState().scrollIndex,
-  //     movie: store.getState().movie,
-  //     tvShow: store.getState().tvShow,
-  //   })
-  // })
 
   return (
     <>
